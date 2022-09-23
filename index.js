@@ -23,6 +23,18 @@ async function run() {
         await client.connect();
         console.log('database connected');
         const facultyCollection = client.db('brimstone').collection('faculty')
+        app.get('/faculty', async (req, res) => {
+            const result = await facultyCollection.find({}).toArray()
+            res.send(result)
+        })
+
+        const achivementCollection = client.db('brimstone').collection('achivement')
+        app.get('/achivement', async (req, res) => {
+            const result = await achivementCollection.find({}).toArray()
+            res.send(result)
+        })
+
+
 
 
 
